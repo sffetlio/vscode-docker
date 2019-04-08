@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug in Docker",
+        // node debuger
+        "type": "node",
+        // only attach debuger to started app in docker
+        "request": "attach",
+        // run task from tasks.json
+        "preLaunchTask": "Docker compose up",
+        // run task from tasks.json
+        "postDebugTask": "Docker compose down",
+        // debug port
+        "port": 9229,
+        // local files to map to remote files
+        "localRoot": "${workspaceFolder}",
+        // remote folder, for ex. Dockerfile WORKDIR /server
+        "remoteRoot": "/server"
+      }
+    ]
+  }

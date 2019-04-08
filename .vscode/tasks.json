@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Docker compose up",
+            "command": "docker-compose",
+            "args": [ "-f", "docker-compose.debug.yml", "up", "-d", "--build"]
+        },
+        {
+            "label": "Docker compose down",
+            "command": "docker-compose",
+            "args": [ "-f", "docker-compose.debug.yml", "down", "-t", "0", /* remove all images*/ /* "--rmi", "all"*/]
+        }
+    ]
+}
