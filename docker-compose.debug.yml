@@ -1,12 +1,25 @@
 version: '2.1'
 
 services:
-  test:
-    image: test
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    ports:
+      - 3306:3306
+    volumes: 
+      - mysql-data:/var/lib/mysql
+  web:
+    image: test-app
     build: .
     environment:
       NODE_ENV: development
     ports:
       - 3000:3000
       - 9229:9229
+    volumes: 
+      - web-data:/storage
     command: npm run debug
+volumes: 
+  mysql-data:
+  web-data:
