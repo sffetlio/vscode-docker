@@ -1,14 +1,20 @@
-version: '2.1'
+version: '3'
 
 services:
   db:
-    image: mysql:8
+    image: mysql:5
     environment:
       MYSQL_ROOT_PASSWORD: 123
+    restart: always
     ports:
       - 3306:3306
     volumes: 
       - mysql-data:/var/lib/mysql
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:3306"]
+        interval: 5s
+        timeout: 5s
+        retries: 20
   web:
     image: test-app
     build: .
@@ -19,6 +25,9 @@ services:
       - 9229:9229
     volumes: 
       - web-data:/storage
+    restart: on-failure
+    depends_on:
+      - db
     command: npm run debug
 volumes: 
   mysql-data:

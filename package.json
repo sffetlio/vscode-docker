@@ -8,7 +8,8 @@
     "debug": "node --inspect=0.0.0.0:9229 index.js"
   },
   "dependencies": {
-    "express": "4.16.4"
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
   },
   "author": "",
   "license": "ISC"

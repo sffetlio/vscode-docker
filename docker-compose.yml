@@ -5,6 +5,7 @@ services:
     image: mysql:8
     environment:
       MYSQL_ROOT_PASSWORD: 123
+    restart: always
     volumes: 
       - mysql-data:/var/lib/mysql
   web:
@@ -12,6 +13,7 @@ services:
     build: .
     environment:
       NODE_ENV: production
+    restart: always
     volumes: 
       - web-data:/storage
     command: npm start
